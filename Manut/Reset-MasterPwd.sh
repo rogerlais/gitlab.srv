@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#* rEF = https://docs.gitlab.com/ee/security/reset_user_password.html#how-to-reset-user-password
+
 # Test if env var gitlab_service setted
 if [ -z "$CNT_GITLAB" ]; then
   echo "Env var from Gitlab container not setted"
@@ -8,7 +10,7 @@ fi
 
 # Solicitar a nova senha ao operador
 echo "Redefinindo a senha do usuário root do GitLab..."
-echo "Informe os dados solicitados abaixo. (root) é o usuário padrão/inicial."
+echo "Informe os dados solicitados abaixo. (root) é o usuário padrão/inicial(carga lenta a depender do servidor)."
 echo
 
 # Acessar o contêiner Docker do GitLab

@@ -19,6 +19,8 @@ if [ ! -f "$GITLAB_COMPOSE" ]; then
     echo "Docker-compose file not found"
     exit 1
 fi
+
+
 echo "Rebuilding the container..."
 echo "Stopping the container..."
 docker stop "${CNT_GITLAB}"
@@ -28,9 +30,10 @@ docker rm "${CNT_GITLAB}"
 echo "Rebuilding the container..."
 #push current directory
 curr_dir="$PWD"
-cd "${GITLAB_HOME}" || { echo "Failure jump to ${GITLAB_HOME}"; exit 1; }
+cd "${GITLAB_HOME}" #|| { echo "Failure jump to ${GITLAB_HOME}"; exit 1; }
+read -p "Do you want to rebuild the container? [y/n] " -n 1 -r
 docker-compose -f "${CNT_GITLAB_COMPOSE}" up -d
-cd "$curr_dir" || { echo "Failure jump to ${GITLAB_HOME}"; exit 1; }
+cd "$curr_dir" #|| { echo "Failure jump to ${GITLAB_HOME}"; exit 1; }
 echo "Container rebuilt."
 echo "Done."
 

@@ -30,10 +30,21 @@ docker rm "${CNT_GITLAB}"
 echo "Rebuilding the container..."
 #push current directory
 curr_dir="$PWD"
+# shellcheck disable=SC2164
 cd "${GITLAB_HOME}"
-read -p "Do you want to rebuild the container? [y/n] " -n 1 -r
+echo "Do you want to rebuild the container? [y/n] "
+# shellcheck disable=SC3045
+read -n 1 -r REPLY
+#if cancelled, exit
+if [ ! "$REPLY" = "Y" ] && [ ! "$REPLY" = "y" ]; then
+    echo "Cancelled."
+    # shellcheck disable=SC2164
+    cd "${curr_dir}" 
+    exit 1
+fi
 echo "Using docker-compose file: ${GITLAB_COMPOSE}"
-docker-compose -f "${CNT_GITLAB_COMPOSE}" up -d
+docker-compose -f "${GITLAB_COMPOSE}" up -d
+# shellcheck disable=SC2164
 cd "${curr_dir}" 
 echo "Container rebuilt."
 echo "Done."

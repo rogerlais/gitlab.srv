@@ -14,9 +14,10 @@ echo "Informe os dados solicitados abaixo. (root) é o usuário padrão/inicial(
 echo
 
 # Acessar o contêiner Docker do GitLab
-docker exec -t ${CNT_GITLAB} gitlab-rake "gitlab:password:reset"
+docker exec -t "${CNT_GITLAB}" gitlab-rake "gitlab:password:reset"
 
 # Verificar se houve erro ao redefinir a senha
+# shellcheck disable=SC2181
 if [ $? -ne 0 ]; then
   echo "Erro ao redefinir a senha do usuário root do GitLab."
   exit 1

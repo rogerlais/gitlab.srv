@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 #test env var CNT_GITLAB
@@ -11,7 +11,6 @@ fi
 if [ -z "$GITLAB_COMPOSE" ]; then
     #Append to cnt_gitlab variable
     GITLAB_COMPOSE="${GITLAB_HOME}/docker-compose.yml"
-    exit 1
 fi
 
 #test docker-compose file exists
@@ -21,16 +20,16 @@ if [ ! -f "$GITLAB_COMPOSE" ]; then
 fi
 echo "Rebuilding the container..."
 echo "Stopping the container..."
-docker stop ${CNT_GITLAB}
+docker stop "${CNT_GITLAB}"
 echo "Removing the container..."
-docker rm ${CNT_GITLAB}
+docker rm "${CNT_GITLAB}"
 
 echo "Rebuilding the container..."
 #push current directory
 curr_dir="$PWD"
-cd ${GITLAB_HOME}
-docker-compose -f ${CNT_GITLAB_COMPOSE} up -d
-cd "$curr_dir"
+cd "${GITLAB_HOME}" || exit
+docker-compose -f "${CNT_GITLAB_COMPOSE}" up -d
+cd "$curr_dir" || exit
 echo "Container rebuilt."
 echo "Done."
 

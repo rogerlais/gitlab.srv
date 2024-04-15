@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 #test env var CNT_GITLAB

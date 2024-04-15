@@ -2,6 +2,7 @@
 
 
 #test env var CNT_GITLAB
+echo "Home = ${GITLAB_HOME}"
 if [ -z "$GITLAB_HOME" ]; then
   echo "Env var from Gitlab HOME not setted"
   exit 1
@@ -10,7 +11,7 @@ fi
 #test env var CNT_GITLAB_COMPOSE
 if [ -z "$GITLAB_COMPOSE" ]; then
     #Append to cnt_gitlab variable
-    GITLAB_COMPOSE="${GITLAB_HOME}/docker-compose.yml"
+    GITLAB_COMPOSE="${GITLAB_HOME}""/docker-compose.yml"
 fi
 
 #test docker-compose file exists

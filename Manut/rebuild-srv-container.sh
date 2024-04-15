@@ -27,9 +27,9 @@ docker rm "${CNT_GITLAB}"
 echo "Rebuilding the container..."
 #push current directory
 curr_dir="$PWD"
-cd "${GITLAB_HOME}" || exit
+cd "${GITLAB_HOME}" || { echo "Failure jump to ${GITLAB_HOME}"; exit 1; }
 docker-compose -f "${CNT_GITLAB_COMPOSE}" up -d
-cd "$curr_dir" || exit
+cd "$curr_dir" || { echo "Failure jump to ${GITLAB_HOME}"; exit 1; }
 echo "Container rebuilt."
 echo "Done."
 

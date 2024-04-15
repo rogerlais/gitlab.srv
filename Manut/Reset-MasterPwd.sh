@@ -9,14 +9,13 @@ fi
 # Solicitar a nova senha ao operador
 echo "Redefinindo a senha do usuário root do GitLab..."
 echo "Informe os dados solicitados abaixo. (root) é o usuário padrão/inicial."
-read -s -p "Digite a nova senha: " nova_senha
 echo
 
 # Acessar o contêiner Docker do GitLab
 docker exec -it "$CNT_GITLAB" /bin/bash << EOF
 
 # Abrir o console Rails
-gitlab-rake "gitlab:password:reset" ROOT_PASSWORD="$nova_senha"
+gitlab-rake "gitlab:password:reset"
 exit
 
 EOF

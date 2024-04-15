@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Verifica se o número de argumentos é válido
 if [ "$#" -ne 2 ]; then

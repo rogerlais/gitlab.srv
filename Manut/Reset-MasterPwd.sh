@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Test if env var gitlab_service setted
 if [ -z "$CNT_GITLAB" ]; then
@@ -12,13 +12,7 @@ echo "Informe os dados solicitados abaixo. (root) é o usuário padrão/inicial.
 echo
 
 # Acessar o contêiner Docker do GitLab
-docker exec -it "$CNT_GITLAB" /bin/bash << EOF
-
-# Abrir o console Rails
-gitlab-rake "gitlab:password:reset"
-exit
-
-EOF
+docker exec -t ${CNT_GITLAB} gitlab-rake "gitlab:password:reset"
 
 # Verificar se houve erro ao redefinir a senha
 if [ $? -ne 0 ]; then

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-#* rEF = https://docs.gitlab.com/ee/security/reset_user_password.html#how-to-reset-user-password
+#* Ref = https://docs.gitlab.com/ee/security/reset_user_password.html#how-to-reset-user-password
+#* General = https://docs.gitlab.com/ee/security/reset_user_password.html
 
 # Test if env var gitlab_service setted
 if [ -z "$CNT_GITLAB" ]; then

@@ -17,7 +17,7 @@ if [ -f "/etc/profiles.d/docker-env.sh" ]; then
     exit 1
 else
     echo "Copying file docker-env.sh to /etc/profiles.d/"
-    cp $REF_PATH/deploy_data/profiles.d/docker-env.sh /etc/profiles.d/
+    cp $REF_PATH/deploy_data/profile.d/docker-env.sh /etc/profile.d/
 fi
 
 #Test if /srv/gitlab exists
@@ -26,8 +26,8 @@ if [ -d "/srv/gitlab" ]; then
     exit 1
 else
     echo "Creating directory /srv/gitlab"
-    mkdir /srv/gitlab
-    cp $REF_PATH/deploy_data/gitlab/gitlab.rb /srv/gitlab/
+    mkdir -p /srv/gitlab
+    cp $REF_PATH/deploy_data/gitlab/docker-compose.yml /srv/gitlab/
 fi
 
 #Call register of env vars

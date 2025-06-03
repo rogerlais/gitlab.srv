@@ -4,7 +4,6 @@
 # shellcheck disable=SC1090
 . "$(dirname "$0")/lib/test-env.sh"
 
-
 #test env var CNT_GITLAB_COMPOSE
 if [ -z "$GITLAB_COMPOSE" ]; then
     #Append to cnt_gitlab variable
@@ -47,4 +46,3 @@ docker-compose -f "${GITLAB_COMPOSE}" up -d
 cd "${curr_dir}" 
 echo "Container rebuilt."
 echo "Done."
-

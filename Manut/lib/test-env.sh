@@ -26,9 +26,3 @@ if [ -z "$CNT_GITLAB" ]; then
   echo "Env var CNT_GITLAB not setted"
   exit 1
 fi
-
-#test if env var CNT_GITLAB is set
-if [ -z "$PQP" ]; then
-  echo "Env var PQP not setted"
-  exit 1
-fi

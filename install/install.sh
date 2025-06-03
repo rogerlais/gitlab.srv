@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #Get docker version
 DOCKER_VERSION=$(docker -v)
 # shellcheck disable=SC2181
@@ -39,4 +38,3 @@ source /etc/profiles.d/docker-env.sh
 
 # shellcheck source=/dev/null
 source "$REF_PATH"/Manut/rebuild-srv-container.sh
-

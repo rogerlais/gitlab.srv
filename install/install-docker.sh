@@ -66,6 +66,7 @@ if [ ! -f /etc/docker/daemon.json ]; then
 else
     #Echo with red text
     echo -e "\033[31mWarning: Docker daemon configuration file already exists.\033[0m"
+    echo -e "\033[31mWarning: Compare with ${PWD}/docker-daemon.json.\033[0m"
 fi
 
 # Start and enable Docker service

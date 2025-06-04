@@ -4,6 +4,8 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+echo -e "\033[31mWarning: Docker Config will be overwriten.\033[0m"
+
 # Check if script is run as root
 if [ "$(id -u)" -ne 0 ]; then
     echo "Error: This script must be run as root" >&2
@@ -52,6 +54,18 @@ if [ "$ACTUAL_USER" != "root" ]; then
     echo "Adding user $ACTUAL_USER to the docker group..."
     usermod -aG docker $ACTUAL_USER
     echo "NOTE: You need to log out and log back in for the group changes to take effect."
+fi
+
+# force initial Docker configuration
+echo "Configuring Docker logging driver..."
+if [ ! -d /etc/docker ]; then
+    mkdir -p /etc/docker
+fi
+if [ ! -f /etc/docker/daemon.json ]; then
+    cp "${PWD}/docker-daemon.json" /etc/docker/daemon.json
+else
+    #Echo with red text
+    echo -e "\033[31mWarning: Docker daemon configuration file already exists.\033[0m"
 fi
 
 # Start and enable Docker service

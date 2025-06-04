@@ -47,5 +47,11 @@ NEW_VERSION=$(docker --version | cut -d ' ' -f 3 | tr -d ',')
 echo "Docker update completed."
 echo "Docker version: $NEW_VERSION (was $CURRENT_VERSION)"
 echo "Docker Compose version: $(docker compose version --short 2>/dev/null || echo 'not available')"
-
+echo "Listing Docker images and containers..."
+docker images
+docker ps -a
+echo "Listing Docker networks..."
+docker network ls
+echo "Listing Docker volumes..."
+docker volume ls
 echo "Docker update process completed successfully."

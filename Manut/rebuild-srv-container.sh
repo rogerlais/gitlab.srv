@@ -39,9 +39,8 @@ if [ ! "$REPLY" = "Y" ] && [ ! "$REPLY" = "y" ]; then
     exit 1
 fi
 
-
 echo "Using docker-compose file: ${GITLAB_COMPOSE}"
-docker-compose -f "${GITLAB_COMPOSE}" up -d
+docker compose -f "${GITLAB_COMPOSE}" up -d
 # shellcheck disable=SC2164
 cd "${curr_dir}" 
 echo "Container rebuilt."
